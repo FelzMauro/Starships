@@ -1,0 +1,49 @@
+﻿@using StarShips.Models
+@model GridResultViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <fieldset>
+            <legend>
+                <i class="fa fa-search"></i> Starships - ASP.NET (Result)
+            </legend>
+        </fieldset>
+
+        <div class="form-group">
+            <div class="col-sm-offset-0 col-sm-12" style="text-align:end">
+                <a class="btn btn-dark" asp-area="" asp-controller="Home" asp-action="Index" >Home</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <table id="resultGrid" class="table table-striped table-bordered table-hover" cellspacing="0">
+                <thead class="sorted_head">
+                    <tr>
+                        <th>
+                            Name of this Starship
+                        </th>
+                        <th>
+                            Stops
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ListResultDTO)
+                    {
+                        <tr>
+                            <td class="tooltip-result">
+                                @Html.DisplayFor(modelItem => item.Name)
+                                <span class="tooltiptext">@item.StarshipDetails</span>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Stop)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
